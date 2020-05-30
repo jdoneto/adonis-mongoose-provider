@@ -8,13 +8,13 @@ class MongooseProvider extends ServiceProvider {
 	register() {
 		this.app.singleton('Adonis/Addons/Mongoose', function (app) {
 			const Config = app.use('Adonis/Src/Config');
-			const mongoHost = Config.get('database.mongo.connection.host', 'localhost')
-			const mongoPort = Config.get('database.mongo.connection.port', '27017')
-			const mongoDb = Config.get('database.mongo.connection.db', 'adonis')
-			const mongoUser = Config.get('database.mongo.connection.user', '')
-			const mongoPass = Config.get('database.mongo.connection.pass', '')
-			const mongoOptions = Config.get('database.mongo.connection.options', {})
-			const mongoUrl = Config.get('database.mongo.connection.url', `${mongoHost}:${mongoPort}/${mongoDb}`)
+			const mongoHost = Config.get('database.mongodb.connection.host', 'localhost')
+			const mongoPort = Config.get('database.mongodb.connection.port', '27017')
+			const mongoDb = Config.get('database.mongodb.connection.database', 'adonis')
+			const mongoUser = Config.get('database.mongodb.connection.user', '')
+			const mongoPass = Config.get('database.mongodb.connection.pass', '')
+			const mongoOptions = Config.get('database.mongodb.connection.options', {})
+			const mongoUrl = Config.get('database.mongodb.connection.url', `${mongoHost}:${mongoPort}/${mongoDb}`)
 			const connectionString = (mongoUser !== '' || mongoPass !== '') ? `mongodb://${mongoUser}:${mongoPass}@${mongoUrl}` : `mongodb://${mongoUrl}`
 
 			mongoose.Promise = global.Promise;
