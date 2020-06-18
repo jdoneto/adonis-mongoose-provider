@@ -14,8 +14,8 @@ class MongooseProvider extends ServiceProvider {
 			const mongoUser = Config.get('database.mongodb.connection.user', '')
 			const mongoPass = Config.get('database.mongodb.connection.pass', '')
 			const mongoOptions = Config.get('database.mongodb.connection.options', {})
-			const mongoUrl = Config.get('database.mongodb.connection.url', `${mongoHost}:${mongoPort}/${mongoDb}`)
-			const connectionString = (mongoUser !== '' || mongoPass !== '') ? `mongodb://${mongoUser}:${mongoPass}@${mongoUrl}` : `mongodb://${mongoUrl}`
+			const mongoUrl = Config.get('database.mongodb.connection.url', '')
+			const connectionString = (mongoUrl !== '') ? `${mongoUrl}` : `mongodb://${mongoUser}:${mongoPass}@${mongoUrl}`
 
 			mongoose.Promise = global.Promise;
 			mongoose.set('useCreateIndex', true);
